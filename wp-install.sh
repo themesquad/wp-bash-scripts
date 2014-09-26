@@ -122,14 +122,15 @@ if [[ $CREATE_VH == "y" ]]; then
     </Directory>
   </VirtualHost>
   ' > /etc/apache2/sites-available/$PROJECT_NAME.conf")
+
+  (sudo sh -c "a2ensite $PROJECT_NAME")
+
+  (sudo sh -c "service apache2 restart")
+
+  (sudo sh -c "echo '\n127.0.0.1 $WP_URL' >> /etc/hosts" )
+
+  echo -e "$SUCCESS_MSG Virtualhost $WP_URL created."
 fi
-
-(sudo sh -c "a2ensite $PROJECT_NAME")
-
-(sudo sh -c "service apache2 restart")
-
-(sudo sh -c "echo '\n127.0.0.1 $WP_URL' >> /etc/hosts" )
-echo -e "$SUCCESS_MSG Virtualhost $WP_URL created."
 
 echo -e "\nBlog installed in http://$WP_URL\n"
 
