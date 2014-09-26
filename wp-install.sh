@@ -15,8 +15,9 @@ PROJECT_NAME="$2"
 DBUSER="$3"
 DBPASS="$4"
 ADMIN_EMAIL="$5"
-ADMIN_PASSWORD="$6"
-PLUGINS_LIST="$7"
+ADMIN_USER="$6"
+ADMIN_PASSWORD="$7"
+PLUGINS_LIST="$8"
 
 # EDIT DEFAULT VALUES HERE
 : ${PWD:=$(pwd)"/"}
@@ -27,6 +28,7 @@ PLUGINS_LIST="$7"
 : ${DBPASS:="dbpass"}
 : ${WP_URL:="$PROJECT_NAME.dev"}
 : ${ADMIN_EMAIL:="admin@email.com"}
+: ${ADMIN_USER:="admin"}
 : ${ADMIN_PASSWORD:="password"}
 : ${PLUGINS_LIST:="none"}
 
@@ -63,7 +65,7 @@ PHP
 wp db create
 
 # Install WordPress.
-wp core install --url=$WP_URL --title="WordPress Site" --admin_user="admin" --admin_email=$ADMIN_EMAIL --admin_password=$ADMIN_PASSWORD
+wp core install --url=$WP_URL --title="WordPress Site" --admin_user=$ADMIN_USER --admin_password=$ADMIN_PASSWORD  --admin_email=$ADMIN_EMAIL
 
 # Change permalinks to Post Name.
 wp rewrite structure '/%postname%/'
