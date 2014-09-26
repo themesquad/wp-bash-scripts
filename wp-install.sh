@@ -10,8 +10,8 @@ AWK=$(which awk)
 GREP=$(which grep)
 
 # Get parameters.
-PWD="$1"
-PROJECT_NAME="$2"
+PROJECT_NAME="$1"
+PWD="$2"
 DBUSER="$3"
 DBPASS="$4"
 ADMIN_EMAIL="$5"
